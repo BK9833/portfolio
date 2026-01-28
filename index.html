@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio de KINDO Boukary, Développeur Fullstack spécialisé en développement web et mobile.">
+    <meta name="keywords" content="développeur fullstack, développement web, développement mobile, PHP, Java, Flutter, Laravel, Spring Boot, Angular, Bootstrap">
+    <meta name="author" content="KINDO Boukary">
+    <title>KINDO Boukary - Développeur Fullstack</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="icon" type="image/png" href="path/to/favicon.png">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        /* Navbar styles */
+        .navbar {
+            transition: all 0.4s ease;
+            padding: 20px 0;
+        }
+        
+        .navbar.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            background-color: rgba(44, 62, 80, 0.95) !important;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            letter-spacing: 1px;
+            position: relative;
+        }
+        
+        .navbar-brand::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .navbar-brand:hover::after {
+            width: 100%;
+        }
+        
+        .nav-link {
+            position: relative;
+            margin: 0 10px;
+            font-weight: 500;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 80%;
+        }
+        
+        /* Hero section */
+        #accueil {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #accueil::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,32L48,58.7C96,85,192,139,288,138.7C384,139,480,85,576,90.7C672,96,768,160,864,176C960,192,1056,160,1152,154.7C1248,149,1344,171,1392,181.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.2;
+        }
+        
+        #accueil .container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .animated-text {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid white;
+            animation: typing 4s steps(40) 1s 1 normal both, blinking 1s steps(1) infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blinking {
+            50% { border-color: transparent }
+        }
+        
+        /* Sections styling */
+        section {
+            padding: 100px 0;
+        }
+        
+        section h2 {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 50px;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+        
+        section h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Skills section */
+        .skill-item {
+            transition: all 0.3s ease;
+            padding: 25px 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            background-color: white;
+        }
+        
+        .skill-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        /* Services section */
+        .service-card {
+            padding: 30px;
+            transition: all 0.3s ease;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            height: 100%;
+            border: none;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+        
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        /* Projects section */
+        .project-card {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: none;
+            height: 100%;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .project-img-container {
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .project-card img {
+            transition: transform 0.5s ease;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .project-card:hover img {
+            transform: scale(1.1);
+        }
+        
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(44, 62, 80, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        
+        /* Video container */
+        .video-section {
+            padding: 80px 0;
+            background-color: var(--light-color);
+        }
+        
+        .video-container {
+            position: relative;
+            overflow: hidden;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            max-width: 800px;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        
+        /* Contact section */
+        .contact-btn {
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-whatsapp {
+            background-color: #25D366;
+            border-color: #25D366;
+        }
+        
+        .btn-email {
+            background-color: white;
+            color: var(--primary-color);
+        }
+        
+        /* Footer */
+        footer {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.05" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,224C672,213,768,171,864,170.7C960,171,1056,213,1152,213.3C1248,213,1344,171,1392,149.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .social-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            margin: 0 10px;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-5px);
+            background-color: var(--primary-color);
+        }
+        
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 99;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Animation for skills progress bars */
+        .progress {
+            height: 8px;
+            border-radius: 4px;
+            background-color: #e9ecef;
+            margin-bottom: 25px;
+            overflow: visible;
+        }
+        
+        .progress-bar {
+            border-radius: 4px;
+            position: relative;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            transition: width 1.5s ease;
+        }
+        
+        .progress-bar::after {
+            content: attr(data-progress) '%';
+            position: absolute;
+            right: 0;
+            top: -25px;
+            color: var(--dark-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        /* Preloader */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--secondary-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        
+        .preloader.fadeOut {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .loader {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary-color);
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            section {
+                padding: 70px 0;
+            }
+            .hero-text {
+                padding: 0 20px;
+            }
+        }
+    </style>
+    
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Back to top button -->
+    <div class="back-to-top" id="back-to-top">
+        <i class="bi bi-arrow-up"></i>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">KINDO Boukary</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#accueil">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#a-propos">À propos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#competences">Compétences</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#realisations">Réalisations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Accueil -->
+    <section id="accueil" class="text-white text-center py-5 vh-100 d-flex align-items-center">
+        <div class="container">
+            <h1 class="display-4 mb-4 animate__animated animate__fadeInDown">Bienvenue, je suis <span class="animated-text">KINDO Boukary</span></h1>
+            <p class="lead mb-5 animate__animated animate__fadeInUp animate__delay-1s">Développeur Fullstack - Créateur de solutions digitales sur mesure</p>
+            <div class="animate__animated animate__fadeInUp animate__delay-2s">
+                <a href="#contact" class="btn btn-light btn-lg px-4 py-3 rounded-pill">Contactez-moi</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- À propos -->
+    <section id="a-propos" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4" data-aos="fade-up">À propos de moi</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div data-aos="fade-up" data-aos-delay="100">
+                        <p class="text-center">Je suis <strong>KINDO Boukary</strong>, développeur <mark>Fullstack</mark> passionné avec une expertise en développement web et mobile. Je conçois des applications modernes, performantes et adaptées aux besoins de mes clients.</p>
+                    </div>
+                    <div data-aos="fade-up" data-aos-delay="200">
+                        <p class="text-center">
+                            Passionné par le développement de solutions numériques innovantes, je suis basé à Ouagadougou, Burkina Faso. Avec une expertise en PHP, Java, HTML, CSS et Flutter, je maîtrise plusieurs frameworks modernes tels que Laravel, Angular, Spring Boot et Bootstrap. Fort de mes compétences en gestion de bases de données (MySQL, PostgreSQL), je crée des applications performantes et évolutives pour répondre aux besoins des entreprises.
+                        </p>
+                    </div>
+                    <div data-aos="fade-up" data-aos-delay="300">
+                        <p class="text-center">
+                            Mon parcours professionnel comprend des expériences significatives chez Orange Burkina Faso en tant que stagiaire IT Support, ainsi qu'à l'Orange Digital Center où je me suis spécialisé en Big Data et en développement Fullstack. J'ai également contribué à la digitalisation des processus au Ministère de la Transition Numérique des Postes et de la Communication Électroniques du Burkina Faso.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-md-6" data-aos="fade-right" data-aos-delay="400">
+                    <h4 class="mb-4">Mes compétences techniques</h4>
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between">
+                            <span>Développement Web (HTML, CSS, JS)</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" data-progress="90" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between">
+                            <span>Développement Mobile (Flutter)</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" data-progress="85" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between">
+                            <span>PHP & Laravel</span>
+                            <span>88%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" data-progress="88" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between">
+                            <span>Angular</span>
+                            <span>45%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" data-progress="45" style="width: 0%;"></div>
+                        </div>
+                    </div>    
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between">
+                            <span>
+                                Java & Spring Boot
+                            </span>
+                            <span>45%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" data-progress="45" style="width: 0%;"></div>
+                        </div>
+                    </div>  
+                </div>
+                <div class="col-md-6" data-aos="fade-left" data-aos-delay="400">
+                    <h4 class="mb-4">Éducation et formation</h4>
+                    <div class="card mb-3 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5>stagiaire Orange Burkina</h5>
+                            <p class="text-muted"><strong>IT Support,Mai 2024- Novembre 2024</strong> <br>Déploiment EBURO,Agent Support IT</p>
+                
+                            <small>Ouagadougou</small>
+                        </div>
+                    </div>
+                    <div class="card mb-3 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5>Big Data et Analyse</h5>
+                            <p class="text-muted">Orange Digital Center, Septembre 2024</p>
+                            <small>Ouagadougou</small>
+                        </div>
+                    </div>
+                    <div class="card mb-3 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5>Développement Java Fullstack</h5>
+                            <p class="text-muted"><strong>Orange Digital Center, 2022-2023</strong> <br>Formation en développement Java Fullstack avec une spécialisation en Spring Boot et Angular;Dockers.</p>
+                
+                            <small>Ouagadougou</small>
+                        </div>
+                    </div>
+                    <div class="card mb-3 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5>Formation Soft-Skills</h5>
+                            <p class="text-muted"><strong>Orange Digital Center, 2023</strong> <br>Formation en développement personnel et professionnel, gestion de projet, communication efficace et leadership. </p>
+                            <small>Ouagadougou</small>
+                        </div>
+                    </div>
+                    <div class="card mb-3 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5>stagiaire</h5>
+                            <p class="text-muted"><strong>Ministère de la Transition Digital des Postes et de la Communication Électroniques, Juillet 2022-Décembre 2022</strong> <br>Mise en place d'un Système de gestion des bons de carburants et lubrifiants</p>
+                            <small>Ouagadougou</small>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compétences -->
+    <section id="competences" class="bg-light py-5">
+        <div class="container">
+            <h2 class="text-center mb-4" data-aos="fade-up">Compétences</h2>
+            <div class="row text-center">
+                <div class="col-md-3 mb-4" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="skill-item">
+                        <div class="skill-icon">
+                            <i class="bi bi-code-slash"></i>
+                        </div>
+                        <h5>Développement Frontend</h5>
+                        <p>HTML, CSS, JavaScript, Flutter</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="skill-item">
+                        <div class="skill-icon">
+                            <i class="bi bi-server"></i>
+                        </div>
+                        <h5>Développement Backend</h5>
+                        <p>PHP, Java, MySQL, SQLite</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="skill-item">
+                        <div class="skill-icon">
+                            <i class="bi bi-phone"></i>
+                        </div>
+                        <h5>Développement Mobile</h5>
+                        <p>Flutter pour Android et iOS</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="skill-item">
+                        <div class="skill-icon">
+                            <i class="bi bi-code-square"></i>
+                        </div>
+                        <h5>Frameworks</h5>
+                        <p>Laravel, Spring Boot, Angular, Bootstrap, Flutter</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="skill-item">
+                        <div class="skill-icon">
+                            <i class="bi bi-database"></i>
+                        </div>
+                        <h5>Bases de données</h5>
+                        <p>MySQL, PostgreSQL, SQLite</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="skill-item">
+                        <div class="skill-icon">
+                            <i class="bi bi-palette"></i>
+                        </div>
+                        <h5>Design & UI/UX</h5>
+                        <p>Responsive Design, UI/UX Principles</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="skill-item">
+                        <div class="skill-icon">
+                            <i class="bi bi-tools"></i>
+                        </div>
+                        <h5>Outils & Méthodologies</h5>
+                        <p>Git, Agile, CI/CD</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4" data-aos="fade-up">Mes Services</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4" data-aos="flip-left" data-aos-delay="100">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-laptop"></i>
+                        </div>
+                        <h5 class="card-title mb-3">Création d'applications</h5>
+                        <p class="card-text">Développement d'applications web, desktop et mobile sur mesure pour répondre à vos besoins spécifiques. Solutions performantes, sécurisées et évolutives.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="flip-left" data-aos-delay="200">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-camera-video"></i>
+                        </div>
+                        <h5 class="card-title mb-3">Infographie et montage vidéo</h5>
+                        <p class="card-text">Conception graphique et montage vidéo professionnel pour vos projets marketing, vos présentations et vos réseaux sociaux.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="flip-left" data-aos-delay="300">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-mortarboard"></i>
+                        </div>
+                        <h5 class="card-title mb-3">Formation et conseils</h5>
+                        <p class="card-text">Accompagnement, formation et conseils en transformation digitale et intelligence artificielle pour vous aider à exploiter pleinement le potentiel numérique.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-md-6 mb-4" data-aos="flip-left" data-aos-delay="400">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-shop"></i>
+                        </div>
+                        <h5 class="card-title mb-3">E-commerce & Applications de Gestion</h5>
+                        <p class="card-text">Développement de solutions e-commerce et d'applications de gestion pour optimiser vos processus métier et augmenter votre efficacité.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4" data-aos="flip-left" data-aos-delay="500">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-bar-chart"></i>
+                        </div>
+                        <h5 class="card-title mb-3">Analyse de données & BI</h5>
+                        <p class="card-text">Mise en place de solutions d'analyse de données et de business intelligence pour vous aider à prendre des décisions éclairées basées sur vos données.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+            <!-- Réalisations (suite) -->
+<section id="realisations" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-4" data-aos="fade-up">Mes Réalisations</h2>
+        <div class="row">
+            <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="accueil.png" alt="Application de gestion Commerciale" class="img-fluid">
+                        <div class="project-overlay">
+                            <div class="project-buttons">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h5>Système de Gestion Commerciale</h5>
+                        <p>Application de gestion complète pour PME avec modules de facturation, comptab et ressources humaines.</p>
+                        <div class="project-tech">
+                            <span class="badge bg-secondary">PHP</span>
+                            <span class="badge bg-secondary">MySQL</span>
+                            <span class="badge bg-secondary">BOOTSTRAP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="caisse.png" alt="Application de Caisse" class="img-fluid">
+                        <div class="project-overlay">
+                            <div class="project-buttons">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h5>Gestion de Caisse</h5>
+                        <p>Application Desktop et web de caisse pour restaurants et commerces locaux à Ouagadougou.</p>
+                        <div class="project-tech">
+                            <span class="badge bg-secondary">PHP</span>
+                            <span class="badge bg-secondary">MySQL</span>
+                            <span class="badge bg-secondary">BOOTSTRAP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="transfereM.png" alt="Mobile Money" class="img-fluid">
+                        <div class="project-overlay">
+                           
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h5>Application de gestion des Mobile Money</h5>
+                        <p>Gere les transferes en optimisant la gestion du registre,les calcules des sommes et les commissions possibles</p>
+                        <div class="project-tech">
+                            <span class="badge bg-secondary">PHP</span>
+                            <span class="badge bg-secondary">MySQL</span>
+                            <span class="badge bg-secondary">BOOTSTRAP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+        <div class="text-center mt-4" data-aos="fade-up" data-aos-delay="700">
+            <a href="#contact" class="btn btn-primary btn-lg">Discuter de votre projet</a>
+        </div>
+    </div>
+</section>
+
+<!-- Témoignages -->
+<section id="temoignages" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-4" data-aos="fade-up">Ce que disent mes clients</h2>
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Témoignage 1"></button>
+                        <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1" aria-label="Témoignage 2"></button>
+                        <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="2" aria-label="Témoignage 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="testimonial-item text-center p-4" data-aos="fade-up">
+                                <div class="testimonial-content">
+                                    <p class="testimonial-text">"KINDO a créé une application qui a révolutionné notre gestion des stocks. Sa compréhension de nos besoins et son expertise technique ont fait toute la différence.Pour notre Quincaillerie"</p>
+                                    <div class="testimonial-author mt-3">
+                                        <h5>Abdoul Guelil SANA</h5>
+                                        <p class="text-muted">
+                                            Responsable, Quincaillerie SANA & Fils</p>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="testimonial-item text-center p-4" data-aos="fade-up">
+                                <div class="testimonial-content">
+                                    <p class="testimonial-text">"Nous avons collaboré avec Boukary sur la digitalisation de notre point de vente de pneumatique.Il nous livré un Système de gestion efficace qui nous a permi de gagner en temps"</p>
+                                    <div class="testimonial-author mt-3">
+                                        <h5>Celestin Gansonre</h5>
+                                        <p class="text-muted">Responsable,pneumatique & Services Wend-Managda</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="testimonial-item text-center p-4" data-aos="fade-up">
+                                <div class="testimonial-content">
+                                    <p class="testimonial-text">"J'utilise Tout le temps le Système de gestion G-STOCK de M KINDO Boukary qu'il a fourni a mon patron pour la gestion de son Quincaillerie et je suis très satisfait du Système"</p>
+                                    <div class="testimonial-author mt-3">
+                                        <h5>Isabelle Kabore </h5>
+                                        <p class="text-muted">Secrétaire, Quincaillerie SANA & FILS</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Précédent</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Suivant</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-4" data-aos="fade-up">Contactez-moi</h2>
+        <div class="row">
+            <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
+                <div class="contact-info mb-4">
+                    <h4 class="mb-3">Informations de contact</h4>
+                    <p>N'hésitez pas à me contacter pour discuter de vos projets ou pour toute question.</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-3">
+                            <i class="bi bi-geo-alt me-2"></i> Ouagadougou, Burkina Faso
+                        </li>
+                        <li class="mb-3">
+                            <i class="bi bi-envelope me-2"></i> <a href="mailto:boukarykkindo01@gmail.com">boukarykkindo01@gmail.com</a>
+                        </li>
+                        <li class="mb-3">
+                            <i class="bi bi-phone me-2"></i> <a href="tel:+22675221398">+226 75 22 13 98 </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="social-links mt-4">
+                    <h4 class="mb-3">Réseaux sociaux</h4>
+                    <div class="d-flex">
+                        <a href="https://www.linkedin.com/in/boukary-kindo-5295862a2" class="social-icon me-3"><i class="bi bi-linkedin"></i></a>
+                        <a href="https://www.youtube.com/@Bkindo01" class="social-icon me-3"><i class="bi bi-youtube"></i></a>
+                        <a href="https://web.facebook.com/KingatechOfficiel/" class="social-icon me-3"><i class="bi bi-facebook"></i></a>
+                        <a href="https://wa.me/61335188" class="social-icon"><i class="bi bi-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 rounded-pill" data-aos="fade-right" data-aos-delay="100">
+                <iframe class="rounded-12" width="100%" height="315" src="https://www.youtube.com/embed/8AChkHt8jkA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                
+            </div>
+
+          
+       
+    </div>
+    
+</section>
+
+<!-- Footer -->
+<footer class="bg-dark text-white py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h5>KINDO Boukary</h5>
+                <p>Développeur Fullstack | Freelance</p>
+            </div>
+            <div class="col-md-6 text-md-end">
+                <p>© 2025 KINDO Boukary. Tous droits réservés.</p>
+                <p><a href="#" class="text-white">Mentions légales</a> | <a href="#" class="text-white">Politique de confidentialité</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- CSS principal -->
+<style>
+    /* Styles généraux */
+    body {
+        font-family: 'Poppins', sans-serif;
+        overflow-x: hidden;
+    }
+    
+    /* Preloader */
+    .preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .loader {
+        border: 5px solid #f3f3f3;
+        border-top: 5px solid #3498db;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    
+    /* Back to top button */
+    .back-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        background-color: #3498db;
+        color: #fff;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        z-index: 999;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    
+    /* Section Accueil */
+    #accueil {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1920/1080') no-repeat center center;
+        background-size: cover;
+        margin-top: 56px;
+    }
+    
+    .animated-text {
+        color: #3498db;
+    }
+    
+    /* Compétences */
+    .skill-item {
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        height: 100%;
+        transition: transform 0.3s;
+    }
+    
+    .skill-item:hover {
+        transform: translateY(-5px);
+    }
+    
+    .skill-icon {
+        font-size: 2.5rem;
+        color: #3498db;
+        margin-bottom: 15px;
+    }
+    
+    .progress {
+        height: 8px;
+        background-color: #e9ecef;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+    
+    .progress-bar {
+        background-color: #3498db;
+        transition: width 1.5s ease-in-out;
+    }
+    
+    /* Services */
+    .service-card {
+        padding: 25px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        height: 100%;
+        transition: transform 0.3s;
+    }
+    
+    .service-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .service-icon {
+        font-size: 2.5rem;
+        color: #3498db;
+        margin-bottom: 15px;
+    }
+    
+    /* Projets */
+    .project-card {
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        height: 100%;
+        transition: transform 0.3s;
+    }
+    
+    .project-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .project-image {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .project-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    
+    .project-image:hover .project-overlay {
+        opacity: 1;
+    }
+    
+    .project-info {
+        padding: 20px;
+    }
+    
+    .project-tech {
+        margin-top: 10px;
+    }
+    
+    .badge {
+        margin-right: 5px;
+    }
+    
+    /* Témoignages */
+    .testimonial-item {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .testimonial-text {
+        font-style: italic;
+        font-size: 1.1rem;
+    }
+    
+    /* Contact */
+    .contact-form {
+        background-color: #fff;
+    }
+    
+    .social-icon {
+        font-size: 1.5rem;
+        color: #3498db;
+        transition: color 0.3s;
+    }
+    
+    .social-icon:hover {
+        color: #2980b9;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+        .skill-item, .service-card, .project-card {
+            margin-bottom: 20px;
+        }
+    }
+</style>
+
+<!-- JavaScript principal -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+<script>
+    $(document).ready(function() {
+        // Initialiser AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+        
+        // Preloader
+        $(window).on('load', function() {
+            $('.preloader').fadeOut('slow');
+        });
+        
+        // Animation des barres de progression
+        function animateProgressBars() {
+            $('.progress-bar').each(function() {
+                let progressValue = $(this).attr('data-progress') + '%';
+                $(this).css('width', progressValue);
+            });
+        }
+        
+        // Déclencher l'animation quand la section est visible
+        let progressSection = $('#a-propos');
+        let animated = false;
+        
+        $(window).scroll(function() {
+            if (isScrolledIntoView(progressSection) && !animated) {
+                animateProgressBars();
+                animated = true;
+            }
+        });
+        
+        // Vérifier si un élément est visible
+        function isScrolledIntoView(elem) {
+            let docViewTop = $(window).scrollTop();
+            let docViewBottom = docViewTop + $(window).height();
+            let elemTop = $(elem).offset().top;
+            let elemBottom = elemTop + $(elem).height();
+            return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+        }
+        
+        // Smooth scroll pour les liens d'ancrage
+        $('a.nav-link, a.navbar-brand, a.btn').on('click', function(e) {
+            if (this.hash !== '') {
+                e.preventDefault();
+                const hash = this.hash;
+                $('html, body').animate({
+                    scrollTop: $(hash).offset().top - 60
+                }, 800);
+            }
+        });
+        
+        // Back to top button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 300) {
+                $('#back-to-top').css('opacity', '1');
+            } else {
+                $('#back-to-top').css('opacity', '0');
+            }
+        });
+        
+        $('#back-to-top').click(function() {
+            $('html, body').animate({scrollTop : 0}, 800);
+        });
+        
+        // Navigation active link
+        $(window).scroll(function() {
+            let position = $(this).scrollTop();
+            $('section').each(function() {
+                let target = $(this).offset().top - 80;
+                let id = $(this).attr('id');
+                if (position >= target) {
+                    $('.navbar-nav .nav-link').removeClass('active');
+                    $('.navbar-nav .nav-link[href="#' + id + '"]').addClass('active');
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
